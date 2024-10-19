@@ -6,7 +6,7 @@ export interface Card {
 
 export interface TeamInfo {
     points: number
-    color: "red" | "blue"
+    color: "red" | "blue" | "yellow" | "purple"
 }
 
 export interface Turn {

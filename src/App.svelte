@@ -3,6 +3,7 @@
   import Settings from "@tabler/icons-svelte/icons/settings";
   import IEEELogo from "./assets/ieee-cs-hu-1.png";
   import EditCardsModal from "./lib/EditCardsModal.svelte";
+  import GameSettingsModal from "./lib/GameSettingsModal.svelte";
   import TeamBoard from "./lib/TeamBoard.svelte";
   import WordCard from "./lib/WordCard.svelte";
   import { cardsState } from "./states/cardsState";
@@ -30,6 +31,7 @@
   }
 
   let showEditCardsModal = false;
+  let showGameSettingsModal = false;
 </script>
 
 <main class={`grid w-full h-screen`}>
@@ -43,8 +45,8 @@
     class="grid lg:grid-cols-4 grid-cols-2 w-full py-5 lg:px-32 px-4 gap-x-4"
   >
     <section class="flex-growc space-y-4">
-      {#each Object.entries(teamsData) as [color, team]}
-        <TeamBoard {team} />
+      {#each Object.values(teamsData) as team}
+        <TeamBoard {team} cards={$cardsState} />
       {/each}
     </section>
 
@@ -91,10 +93,14 @@
       >
         <Edit stroke={1.5} /> Edit Cards
       </button>
-      <button class="action-btn p-2 flex gap-x-2" disabled>
-        <Settings stroke={1.5} /> Config Game
+      <button
+        class="action-btn p-2 flex gap-x-2"
+        on:click={() => (showGameSettingsModal = true)}
+      >
+        <Settings stroke={1.5} /> Game Settings
       </button>
     </section>
+
     <section>
       <img
         alt="IEEE Logo"
@@ -106,6 +112,7 @@
 </main>
 
 <EditCardsModal bind:showModal={showEditCardsModal} />
+<GameSettingsModal bind:showModal={showGameSettingsModal} />
 
 <style>
   #board {

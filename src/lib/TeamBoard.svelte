@@ -1,20 +1,24 @@
 <script lang="ts">
     import Crown from "@tabler/icons-svelte/icons/crown";
     import { currentTeam } from "../states/currentTeamState";
-    import type { TeamInfo, Turn } from "../types";
-    import { cardsState } from "../states/cardsState";
+    import type { Card, TeamInfo } from "../types";
 
     export let team: TeamInfo;
-    let currentTeamState = {} as Turn;
-    currentTeam.subscribe((value) => {
-        currentTeamState = value;
-    });
+    export let cards: Card[]
 
-    $: cardState = $cardsState;
+    $: currentTeamState = $currentTeam;
+
+    const teamColors = new Map([
+        ["blue", "bg-blue-600"],
+        ["red", "bg-red-600"],
+        ["yellow", "bg-yellow-600"],
+        ["purple", "bg-purple-600"],
+        ["neutral", "bg-slate-500"],
+    ]);
 </script>
 
 <article
-    class={`flex-grow flex justify-between items-center px-4 py-2 ${team.color === "blue" ? "bg-blue-600" : "bg-red-600"}
+    class={`flex-grow flex justify-between items-center px-4 py-2 ${teamColors.get(team.color)}
      shadow-lg rounded-lg text-white duration-200`}
 >
     <h1 class="font-bold capitalize">
@@ -27,7 +31,8 @@
         {/if}
     </h1>
 
-    {team.points} / {Math.floor(cardState.length / 2)}
+    {team.points} / {cards.filter((card) => card.color === team.color).length}
+    <!-- points system needs a change -->
 </article>
 
 <style>

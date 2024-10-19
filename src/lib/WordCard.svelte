@@ -18,9 +18,11 @@
         if (!revealed) revealed = true;
     }
 
-    const colors = new Map([
+    const borderColors = new Map([
         ["blue", "border-blue-600"],
         ["red", "border-red-600"],
+        ["yellow", "border-yellow-600"],
+        ["purple", "border-purple-600"],
         ["neutral", "border-slate-500"],
         [undefined, "border-zinc-600"],
     ]);
@@ -31,10 +33,10 @@
     ${
         isTeller
             ? !revealed // teller style //using a const for those values doesn't work, so we are stuck with this spaghetti code
-                ? colors.get(card.color)
+                ? borderColors.get(card.color)
                 : "border-zinc-600"
             : revealed // guesser style
-              ? colors.get(card.color)
+              ? borderColors.get(card.color)
               : "border-zinc-600"
     }`}
     on:click={reveal}
