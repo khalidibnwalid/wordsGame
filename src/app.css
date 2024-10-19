@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  margin: 0px;
+  font-family: 'Courier New', Courier, monospace;
+  overflow: auto;
+}
+
+body {
+  background: #27272a;
+}
+
+.action-btn {
+  border-radius: 0.375rem;
+  background: #fafaf9;
+  transition-duration: 0.2s;
+}
+
+.action-btn:disabled {
+  background: #d6d3d1;
+  cursor: not-allowed;
+}
+
+input,
+textarea {
+  background: #cbd5e1;
+  border-radius: 0.375rem;
+  flex-grow: 1;
+  width: 100%;
+  padding: 0.25rem 0.6rem;
+  transition-duration: .2s;
+  color: #000;
+}
+
+input:hover,
+.action-btn:hover {
+  background: #d6d3d1;
+}
