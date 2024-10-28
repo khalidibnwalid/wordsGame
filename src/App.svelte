@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Footer from "./lib/Footer.svelte";
-  import WordCard from "./lib/WordCard.svelte";
+  import Footer from "./lib/layout/Footer.svelte";
+  import WordCard from "./lib/layout/WordCard.svelte";
   import { cardsState } from "./states/cardsState";
   import { currentTeam } from "./states/currentTeamState";
   import { teamsState } from "./states/teamsState";

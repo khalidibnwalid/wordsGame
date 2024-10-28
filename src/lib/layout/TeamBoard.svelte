@@ -1,7 +1,7 @@
 <script lang="ts">
     import Crown from "@tabler/icons-svelte/icons/crown";
-    import { currentTeam } from "../states/currentTeamState";
-    import type { Card, TeamInfo } from "../types";
+    import { currentTeam } from "../../states/currentTeamState";
+    import type { Card, TeamInfo } from "../../types";
 
     export let team: TeamInfo;
     export let cards: Card[]

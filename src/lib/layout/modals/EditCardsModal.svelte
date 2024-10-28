@@ -3,8 +3,8 @@
     import DeviceFloppy from "@tabler/icons-svelte/icons/device-floppy";
     import Pencil from "@tabler/icons-svelte/icons/pencil";
     import Plus from "@tabler/icons-svelte/icons/plus";
-    import { cardsState } from "../states/cardsState";
-    import Modal from "./Modal.svelte";
+    import { cardsState } from "../../../states/cardsState";
+    import Modal from "../../ui/Modal.svelte";
 
     export let showModal = false;
 

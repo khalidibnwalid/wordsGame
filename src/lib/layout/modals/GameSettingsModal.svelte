@@ -1,10 +1,10 @@
 <script lang="ts">
     import Eye from "@tabler/icons-svelte/icons/eye";
     import Users from "@tabler/icons-svelte/icons/users";
-    import { cardsState } from "../states/cardsState";
-    import { currentTeam } from "../states/currentTeamState";
-    import { teamsState } from "../states/teamsState";
-    import Modal from "./Modal.svelte";
+    import { cardsState } from "../../../states/cardsState";
+    import { currentTeam } from "../../../states/currentTeamState";
+    import { teamsState } from "../../../states/teamsState";
+    import Modal from "../../ui/Modal.svelte";
 
     export let showModal = false;
 

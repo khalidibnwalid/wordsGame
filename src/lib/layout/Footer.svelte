@@ -2,12 +2,12 @@
     import Edit from "@tabler/icons-svelte/icons/edit";
     import Eye from "@tabler/icons-svelte/icons/eye";
     import Settings from "@tabler/icons-svelte/icons/settings";
-    import IEEELogo from "../assets/ieee-cs-hu-1.png";
-    import { cardsState } from "../states/cardsState";
-    import { currentTeam } from "../states/currentTeamState";
-    import { teamsState } from "../states/teamsState";
-    import EditCardsModal from "./EditCardsModal.svelte";
-    import GameSettingsModal from "./GameSettingsModal.svelte";
+    import IEEELogo from "../../assets/ieee-cs-hu-1.png";
+    import { cardsState } from "../../states/cardsState";
+    import { currentTeam } from "../../states/currentTeamState";
+    import { teamsState } from "../../states/teamsState";
+    import EditCardsModal from "./modals/EditCardsModal.svelte";
+    import GameSettingsModal from "./modals/GameSettingsModal.svelte";
     import TeamBoard from "./TeamBoard.svelte";
 
     export let specNum: number;

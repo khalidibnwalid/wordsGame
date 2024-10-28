@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { cardsState } from "../states/cardsState";
-    import { currentTeam } from "../states/currentTeamState";
-    import type { Card } from "../types";
+    import { cardsState } from "../../states/cardsState";
+    import { currentTeam } from "../../states/currentTeamState";
+    import type { Card } from "../../types";
 
     export let index: number;
     export let card: Card;
