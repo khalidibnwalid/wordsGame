@@ -26,21 +26,21 @@
         ["red", "border-red-600"],
         ["yellow", "border-yellow-600"],
         ["purple", "border-purple-600"],
-        ["neutral", "border-slate-500"],
-        [undefined, "border-zinc-600"],
+        ["neutral", "border-slate-400"],
+        [undefined, "border-zinc-700"],
     ]);
 </script>
 
 <button
-    class={`p-0 lg:py-4 lg:p-2 hover:bg-opacity-80 hover:scale-105 shadow-lg text-sm lg:text-lg border-8 border-solid
+    class={` p-0 lg:py-4 lg:p-2 hover:bg-opacity-80 hover:scale-105 shadow-lg text-sm lg:text-lg border-8 border-solid
     ${
         isSpectator || isTeller
             ? !revealed // teller style //using a const for those values doesn't work, so we are stuck with this spaghetti code
                 ? borderColors.get(card.color)
-                : "border-zinc-600"
+                : "border-zinc-700"
             : revealed // guesser style
               ? borderColors.get(card.color)
-              : "border-zinc-600"
+              : "border-zinc-700"
     }`}
     on:click={reveal}
 >
