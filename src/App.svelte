@@ -1,13 +1,12 @@
 <script lang="ts">
   import Footer from "./lib/layout/Footer.svelte";
+  import WinnerModal from "./lib/layout/modals/WinnerModal.svelte";
   import WordCard from "./lib/layout/WordCard.svelte";
   import { cardsState } from "./states/cardsState";
   import { currentTeam } from "./states/currentTeamState";
   import { teamsState } from "./states/teamsState";
 
   cardsState.shuffleUp();
-
-  let devNum = 0;
 
   let isSpectator = $currentTeam?.spectator === true;
   let specNum = 0;
@@ -18,8 +17,6 @@
 
   window.onstorage = () => {
     const localStorage = window.localStorage;
-
-    console.log("storage event", ++devNum);
 
     specNum = parseInt(localStorage.getItem("specNum") as string) || 0;
     if (!isSpectator) return;
@@ -41,6 +38,8 @@
   </div>
   <Footer bind:specNum />
 </main>
+
+<WinnerModal />
 
 <style>
   #board {
