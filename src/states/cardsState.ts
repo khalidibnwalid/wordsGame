@@ -16,7 +16,7 @@ function createState() {
 
     function generateColors(n: number): Cards['colors'][] {
         const usedColors = [...Object.keys(teams), "neutral"];
-        const portion = Math.ceil(n / usedColors.length);
+        const portion = Math.floor(n / usedColors.length);
         let colors = [] as Cards['colors'][];
         for (let color of usedColors)
             colors = colors.concat(Array(portion).fill(color))

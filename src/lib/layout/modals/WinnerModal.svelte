@@ -4,7 +4,6 @@
     import type { TeamInfo } from "../../../types";
     import Modal from "../../ui/Modal.svelte";
 
-    // let showModal = false;
     let showModal = false;
     let winnerTeam = {} as TeamInfo;
 
@@ -17,7 +16,7 @@
                 (card) => card.color === team.color,
             ).length;
 
-            if (team.points >= maxPoints) {
+            if (team.points >= maxPoints && team.points > 0) {
                 winnerTeam = team;
                 showModal = true;
             }
