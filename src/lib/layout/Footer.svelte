@@ -50,7 +50,15 @@
     </section>
 
     <section class=" flex-none space-y-4">
-        {#if isTeller}
+        {#if specNum != 0 && !isSpectator}
+            <button
+                class="action-btn text-3xl px-2"
+                on:click={addHint}
+                disabled={!isTeller || isSpectator}
+            >
+                Start
+            </button>
+        {:else if isTeller}
             <div class="flex gap-x-1">
                 <input
                     type="text"
@@ -109,7 +117,7 @@
         {#if specNum || isSpectator}
             <button class="action-btn p-2 flex gap-x-2" disabled>
                 <Eye stroke={1.5} />
-                {isSpectator ? "Joined as a Spectator" : "Have Spectators"}
+                {isSpectator ? "Joined as a Spectator" : "Joined as a Player"}
             </button>
         {/if}
     </section>

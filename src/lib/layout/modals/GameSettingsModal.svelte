@@ -115,6 +115,12 @@
             >
                 Reset Game
             </button>
+            <button
+                class="action-btn px-2 text-xl text-black"
+                on:click={() => cardsState.shuffleUp(false)}
+            >
+                Shuffle without unRevealing
+            </button>
         </section>
     </div>
 </Modal>

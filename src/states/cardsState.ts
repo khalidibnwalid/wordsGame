@@ -67,9 +67,9 @@ function createState() {
             return cards;
         }),
         /** produce perfectly distributed cards & reset the game */
-        shuffleUp: () => update((cards) => {
+        shuffleUp: (resetReveal: boolean = true) => update((cards) => {
             const shuffledColors = generateColors(cards.length);
-            const shuffledCards = cards.map((card, index) => ({ ...card, color: shuffledColors[index], revealed: false }));
+            const shuffledCards = cards.map((card, index) => ({ ...card, color: shuffledColors[index], revealed: resetReveal ? false : card.revealed }));
             setLocalStorage(shuffledCards)
             return shuffledCards;
         }),
