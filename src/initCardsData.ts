@@ -1,6 +1,4 @@
-import { get, writable } from 'svelte/store';
-import type { Card, GameSettings } from '../types';
-import { cardsState } from './cardsState';
+import type { Card } from './types';
 
 export const originalData = [
     { word: "apple", color: "blue", revealed: false },
@@ -28,13 +26,3 @@ export const originalData = [
     { word: "yuzu", color: "blue", revealed: false },
     { word: "zucchini", color: "red", revealed: false },
 ] as Card[]
-
-function createState() {
-    const { subscribe, set, update } = writable({} as GameSettings);
-
-    return {
-        subscribe,
-    }
-}
-
-export const gameSettings = createState();

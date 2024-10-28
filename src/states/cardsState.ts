@@ -2,7 +2,7 @@ import type Cards from '@tabler/icons-svelte/icons/cards';
 import { writable } from 'svelte/store';
 import type { Card, Turn } from '../types';
 import { currentTeam } from './currentTeamState';
-import { originalData } from './gameSettings';
+import { originalData } from '../initCardsData';
 import { teamsState } from './teamsState';
 
 function createState() {
@@ -25,6 +25,10 @@ function createState() {
         return shuffledColors
     }
 
+    function setLocalStorage(cards: Card[]) {
+        localStorage.setItem('cards', JSON.stringify(cards));
+    }
+
     return {
         subscribe,
         reveal: (index: number) => update((cards) => {
@@ -40,30 +44,36 @@ function createState() {
             else
                 currentTeam.consumeTurn();
 
+            setLocalStorage(cards)
             return cards;
         }),
         setCards: (cards: string[]) => {
             const shuffledColors = generateColors(cards.length);
             const newCards = cards.map((word, index) => ({ word, color: shuffledColors[index], revealed: false }));
             set(newCards)
+            setLocalStorage(newCards)
         },
         addCard: (word: Card['word']) => update((cards) => {
             const usedColors = [...Object.keys(teams), "neutral"] as Card['color'][];
             const randomIndex = Math.floor(Math.random() * usedColors.length);
             const color = usedColors[randomIndex];
             cards.push({ word, color, revealed: false });
+            setLocalStorage(cards)
             return cards;
         }),
         removeCard: (index: number) => update((cards) => {
             cards.splice(index, 1);
+            setLocalStorage(cards)
             return cards;
         }),
         /** produce perfectly distributed cards & reset the game */
         shuffleUp: () => update((cards) => {
             const shuffledColors = generateColors(cards.length);
             const shuffledCards = cards.map((card, index) => ({ ...card, color: shuffledColors[index], revealed: false }));
+            setLocalStorage(shuffledCards)
             return shuffledCards;
         }),
+        replaceCards: (cards: Card[]) => set(cards), // for window.localStorage
     };
 }
 

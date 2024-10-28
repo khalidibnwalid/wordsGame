@@ -6,16 +6,19 @@
     export let index: number;
     export let card: Card;
 
-    let revealed = false;
+
+    let revealed = card.revealed;
     let isTeller = $currentTeam.player === "teller";
+    let isSpectator = $currentTeam?.spectator === true;
+
     currentTeam.subscribe((value) => {
         isTeller = value.player === "teller";
+        isSpectator = value.spectator === true;
     });
 
     function reveal() {
-        if (isTeller) return;
+        if (isTeller || isSpectator) return;
         cardsState.reveal(index);
-        if (!revealed) revealed = true;
     }
 
     const borderColors = new Map([
@@ -31,7 +34,7 @@
 <button
     class={`p-0 lg:py-4 lg:p-2 hover:bg-opacity-80 hover:scale-105 shadow-lg text-sm lg:text-lg border-8 border-solid
     ${
-        isTeller
+        isSpectator || isTeller
             ? !revealed // teller style //using a const for those values doesn't work, so we are stuck with this spaghetti code
                 ? borderColors.get(card.color)
                 : "border-zinc-600"

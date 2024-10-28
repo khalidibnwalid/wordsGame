@@ -13,11 +13,5 @@ export interface Turn {
     color: TeamInfo['color'],
     player: "teller" | "guesser"
     turns?: number
-}
-
-export interface GameSettings {
-    cardsData: Card[]
-    turns: number
-    teamSize: number
-    modes: string
+    spectator?: boolean
 }

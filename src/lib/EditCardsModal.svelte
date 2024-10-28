@@ -10,6 +10,7 @@
 
     let input = "";
     function addWord() {
+        if (!input) return;
         cardsState.addCard(input);
         input = "";
     }
